@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11151a">
+  <title>Filter Lab · Image Studies</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./src/app.js"></script>
+</head>
+<body>
+  <header class="masthead">
+    <a class="wordmark" href="./" aria-label="Filter Lab home"><span class="brand-icon" aria-hidden="true">✳</span> FILTER<span>LAB</span></a>
+    <span class="edition">IMAGE STUDIES <span aria-hidden="true">/</span> VOL. 01</span>
+    <div class="header-actions">
+      <label class="button upload" for="upload">Open image
+        <input type="file" id="upload" accept="image/*">
+      </label>
+      <button id="export" class="button accent" disabled>Export PNG <span aria-hidden="true">↗</span></button>
+    </div>
+  </header>
+
+  <main>
+    <header class="intro">
+      <p class="eyebrow"><span class="signal" aria-hidden="true"></span> PROCEDURAL IMAGE WORKBENCH</p>
+      <h1>From pixels to patterns<span>.</span></h1>
+      <p>Explore how a photograph becomes a field of dots or a two-tone print.</p>
+    </header>
+
+    <div class="workbench">
+      <aside class="rail" aria-label="Filter settings">
+        <section class="panel">
+          <h2><span>01</span> Filters</h2>
+          <div class="filters" role="group" aria-label="Active filter">
+            <button class="filter" data-filter="halftone" aria-pressed="true">
+              <span class="swatch dots" aria-hidden="true"></span><span><strong>Halftone</strong><small>Brightness → dot area</small></span>
+            </button>
+            <button class="filter" data-filter="dither" aria-pressed="false">
+              <span class="swatch squares" aria-hidden="true"></span><span><strong>Ordered dither</strong><small>Brightness → on or off</small></span>
+            </button>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2><span>02</span> Parameters <button class="text-button" id="reset">Reset</button></h2>
+          <label class="control" for="cell-size">Cell size <output id="size-value" for="cell-size"></output></label>
+          <input id="cell-size" type="range" min="2" max="48" step="1">
+          <label class="control" for="strength"><span id="strength-label">Dot scale</span><output id="strength-value" for="strength"></output></label>
+          <input id="strength" type="range">
+          <div class="color-controls">
+            <label for="ink">Ink <input id="ink" type="color" value="#19332e"></label>
+            <label for="paper">Paper <input id="paper" type="color" value="#f2e9d0"></label>
+          </div>
+          <label class="invert"><input id="invert" type="checkbox"> Invert brightness</label>
+        </section>
+      </aside>
+
+      <section class="viewer" aria-label="Image preview">
+        <div class="viewer-bar">
+          <div class="views" role="group" aria-label="Preview stage">
+            <button data-view="source" aria-pressed="false">Source</button>
+            <button data-view="samples" aria-pressed="false">Samples</button>
+            <button data-view="result" aria-pressed="true">Result</button>
+          </div>
+          <span id="dimensions" class="dimensions"></span>
+        </div>
+        <div class="stage">
+          <div class="canvas-wrap" id="canvas-wrap">
+            <canvas id="preview" width="960" height="640" tabindex="0" aria-label="Filter preview. Use the arrow keys to move the sample probe." aria-describedby="probe-hint"></canvas>
+            <span id="marker" aria-hidden="true" hidden></span>
+          </div>
+        </div>
+        <div class="viewer-footer">
+          <span id="image-name">Moonrise Valley</span>
+          <button class="text-button" id="sample">Restore demo image</button>
+        </div>
+        <p id="status" role="status"></p>
+      </section>
+
+      <aside class="rail study" aria-label="Study the filter">
+        <section class="panel">
+          <h2><span>03</span> Study</h2>
+          <p class="study-label">HOW IT WORKS</p>
+          <h3 id="study-title"></h3>
+          <p id="study-copy"></p>
+          <p class="formula" id="formula"></p>
+          <div class="bayer" id="bayer" hidden aria-label="4 by 4 Bayer ranks"></div>
+        </section>
+
+        <section class="panel">
+          <h2><span>04</span> Cell probe</h2>
+          <p id="probe-hint">Click the preview or focus it and use the arrow keys to inspect a cell.</p>
+          <dl id="probe" aria-live="polite"></dl>
+          <p class="experiment" id="experiment"></p>
+        </section>
+      </aside>
+    </div>
+    <footer><span>FILTER LAB <span aria-hidden="true">/</span> STUDY 01</span><span>LOCAL IMAGE PROCESSING · CANVAS 2D</span></footer>
+  </main>
+</body>
+</html>

@@ -1,6 +1,6 @@
 // The numbers are ranks, not pixel colors. Modulo wraps this 4×4 tile over
 // the whole image. Low ranks receive ink first as the image gets darker.
-const BAYER = [
+export const BAYER = [
   [0, 8, 2, 10],
   [12, 4, 14, 6],
   [3, 11, 1, 9],
